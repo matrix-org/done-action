@@ -1,0 +1,9 @@
+name: 'Done'
+description: 'Check if dependent jobs completed'
+inputs:
+  needs:
+    description: 'The GHA "needs" context'
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
