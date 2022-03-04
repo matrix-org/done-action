@@ -4,6 +4,9 @@ inputs:
   needs:
     description: 'The GHA "needs" context'
     required: true
+  skippable:
+    description: 'A space-separated list of jobs that can be skipped'
+    required: false
 runs:
   using: 'node16'
   main: 'dist/index.js'

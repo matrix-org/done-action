@@ -27,12 +27,22 @@ jobs:
     needs:
       - job_1
       - job_2
+      - skippable_job_1
+      - skippable_job_2
     runs-on: ubuntu-latest
     steps:
       - uses: matrix-org/done-action@v1
         with:
           needs: ${{ toJSON(needs) }}
+          skippable: |
+            skippable_job_1
+            skippable_job_2
+
 ```
 
 Under `needs`, you should list the names of the jobs that you want to complete
 for the required status check to pass.
+
+By default, the dependent jobs may not be skipped. Optionally, you can specify
+the names of any jobs which may be skipped whilst still allowing the workflow to
+pass, under `steps...with.skippable`, one job per line.
