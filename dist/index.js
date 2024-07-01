@@ -26804,42 +26804,43 @@ module.exports = parseParams
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
-const core = __nccwpck_require__(2186);
+"use strict";
+var exports = __webpack_exports__;
 
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const core_1 = __nccwpck_require__(2186);
 function parseJsonInput(param_name) {
-    const param_val = core.getInput(param_name);
+    const param_val = (0, core_1.getInput)(param_name);
     try {
         return JSON.parse(param_val);
-    } catch (error) {
+    }
+    catch (error) {
         throw new Error(`Invalid '${param_name}' input ${param_val}: ${error.message}`);
     }
 }
-
-
 function main() {
-    const needs = parseJsonInput('needs');
-    const skippable = core.getMultilineInput('skippable');
-
+    const needs = parseJsonInput("needs");
+    const skippable = (0, core_1.getMultilineInput)("skippable");
     console.debug(`needs: ${JSON.stringify(needs)}`);
     console.debug(`skippable: ${JSON.stringify(skippable)}`);
     for (const job_id of Object.keys(needs)) {
         const result = needs[job_id].result;
         console.log(`Job ${job_id} returned ${result}`);
-        if (result == 'skipped' && skippable.includes(job_id)) {
+        if (result == "skipped" && skippable.includes(job_id)) {
             continue;
         }
-        if (result != 'success') {
+        if (result != "success") {
             throw new Error(`Job ${job_id} returned ${result}`);
         }
     }
 }
-
 try {
     main();
-} catch (error) {
-  core.setFailed(error.message);
+}
+catch (error) {
+    (0, core_1.setFailed)(error.message);
 }
 
 })();
