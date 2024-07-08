@@ -2,9 +2,9 @@
   "name": "done-action",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build index.js --license licenses.txt"
+    "build": "ncc build index.ts --license licenses.txt"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/matrix-org/done-action#readme",
   "dependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.10.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.33.3"
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.14.9",
+    "@vercel/ncc": "^0.38.1",
+    "typescript": "^5.5.2"
   }
 }
